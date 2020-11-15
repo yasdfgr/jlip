@@ -25,6 +25,11 @@ Remote Controls
 - VariZoom VZROCK-J150 https://www.varizoom.com/product/vzrock-j150/
 - JVC HZ-ZOE-HM150 http://www.jvcpro.gr/products/controllers/1000004751-HZ-ZOE-HM150
 
+Interface
+---------
+Signallevel: 3.3V
+Format: 9600baud 1E8 (8 daten, 1 stop-bit, even-parity)
+
 Protocol
 ---------
 
