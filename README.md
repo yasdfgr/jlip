@@ -12,6 +12,7 @@ https://github.com/ags-tubs/jvc-remote
 - pinout
 
 Related Hardware
+---------
 
 Cameras
 - JVC GY-HM70E
@@ -22,3 +23,14 @@ Remote Controls
 - JVC HZ-HM150VZR http://pro.jvc.com/prof/attributes/features.jsp?model_id=MDL102139&feature_id=01
 - VariZoom VZROCK-J150 https://www.varizoom.com/product/vzrock-j150/
 - JVC HZ-ZOE-HM150 http://www.jvcpro.gr/products/controllers/1000004751-HZ-ZOE-HM150
+
+Protocol
+---------
+
+#### valid commands ####
+
+|cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
+|---|------|------|------|------|------|------|------|------|------|------|------|
+|cmd|0xFF|0xFF|0x00|0x00|0x00|0x00|0x00|0x00|0x00|0x00|chk|
+|||||||||||
+|||||||||||
