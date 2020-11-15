@@ -1,5 +1,6 @@
 # jlip
 All about JLIP (Joint Level Interface Protocol) / J-Terminal / JVC Camera Remote
+I searched for a possible way to control my jvc cams from a local remote controller.
 
 First of all a collection of ressources that i've found about jvc remote control:
 - jvc-remote Project
