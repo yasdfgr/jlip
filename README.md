@@ -54,6 +54,7 @@ kurz
 19200 8E1
 
 Bei diesen Parametern werden die Bytes decodiert und das Parity-Bit ist jeweils gültig.
+Der Signallevel bzw. -hub liegt bei etwa 10-12V und damit im üblichen Bereich von RS-232 -15V .. +15V
 
 Interface (unbestätigt)
 ---------
