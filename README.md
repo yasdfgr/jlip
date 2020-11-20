@@ -73,6 +73,7 @@ Protocol
 #### valid commands ####
 
 Byte 1 Low Nibble sieht aus, als wäre es die Lnge der nachfolgenden Daten.
+Das letzte Byte ist vermutlich die Checksumme.
 
 |cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
 |---|------|------|------|------|------|------|------|------|------|------|------|
