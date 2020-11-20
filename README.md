@@ -72,6 +72,8 @@ Protocol
 ---------
 #### valid commands ####
 
+Byte 1 Low Nibble sieht aus, als wäre es die Lnge der nachfolgenden Daten.
+
 |cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
 |---|------|------|------|------|------|------|------|------|------|------|------|
 |Idle (Statusabfrage))|0x93|0x01|0x00|0x01||||||||
@@ -102,25 +104,14 @@ Protocol
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x00|0x21|0x1D|||||
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x00|0x1C|0x18|||||
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x00|0x15|0x11|||||
-
+|Record toggle |0x94|0x4C|0x20|0x00|0x6C|||||||
 |Record aus ?? kommt nach dem Status|0xDF|||||||||||
 |Record ein ?? kommt nach den Status|0xEE|||||||||||
-
-|Record toggle |0x94|0x4C|0x20|0x00|0x6C|||||||
 
 #### valid response ####
 
 |cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
 |---|------|------|------|------|------|------|------|------|------|------|------|
 |Quittung|0x05|||||||||||
-|Status REC aus|0xE5|0xD3|0xFD|0xFF|0x7D|||||||
-|Status REC an|0xE5|0xD3|0xFD|0xF5|0x73|||||||
-
-
-#### valid commands ####
-
-|cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
-|---|------|------|------|------|------|------|------|------|------|------|------|
-|cmd|0xFF|0xFF|0x00|0x00|0x00|0x00|0x00|0x00|0x00|0x00|chk|
-|||||||||||
-|||||||||||
+|Status REC aus|0xE5|0xD3|0xFD|0xFF|0x7D|(0x00)||||||
+|Status REC an|0xE5|0xD3|0xFD|0xF5|0x73|(0x00)||||||
