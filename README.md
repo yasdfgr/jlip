@@ -11,6 +11,7 @@ https://github.com/ags-tubs/jvc-remote
 - http://www.johnwillis.com/2018/09/jvc-jlip-joint-level-interface-protocol.html
 - JLIP Protocol Documentation
 - pinout
+- http://controlyourcamera.blogspot.com/ (LANC etc.)
 
 Related Hardware
 ---------
