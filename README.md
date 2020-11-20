@@ -73,8 +73,12 @@ Protocol
 ---------
 #### valid commands ####
 
-Byte 1 Low Nibble sieht aus, als wäre es die Lnge der nachfolgenden Daten.
+Byte 1 Low Nibble sieht aus, als wäre es die Länge der nachfolgenden Daten.
 Das letzte Byte ist vermutlich die Checksumme.
+
+Blendenkommando schaltet 1 Stufe +(-
+Fokus bleibt auf dem letzten Status - es muss ein Stop geben
+Zoom bleibt auf dem letzten Status - es muss ein Stop geben
 
 |cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
 |---|------|------|------|------|------|------|------|------|------|------|------|
@@ -91,6 +95,7 @@ Das letzte Byte ist vermutlich die Checksumme.
 |Zoom + (vergrößern) 6|0x95|0x4C|0x30|0x00|0x6F|0x6B||||||
 |Zoom + (vergrößern) 6|0x95|0x4C|0x30|0x00|0x77|0x73||||||
 |Zoom + (vergrößern) 6|0x95|0x4C|0x30|0x00|0x7E|0x7A||||||
+|Zoom STOP|0x95|0x4C|0x30|?|?|?||||||
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x01|0x09|0x06||||||
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x01|0x08|0x05||||||
 |Zoom - (verkleinern)|0x95|0x4C|0x30|0x00|0x7D|0x79||||||
