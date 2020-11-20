@@ -37,7 +37,7 @@ PIN 2 TX etwa +12V
 PIN 3 GND
 PIN 4 folgt PIN 1
 
-Die Spannungen gehen nach etwa 7 Sekunden zurück auf 0V, wenn keine Fernbedienung angeschlossen ist.
+Die Spannungen gehen nach etwa 10 Sekunden zurück auf 0V, wenn keine Fernbedienung angeschlossen ist.
 Vermutlich ist die Vorraussetzung, dass die Fernbedienung laufend eine Befehlsfolge schickt, so dass die Spannung/Schnittstelle an bleibt.
 
 Die Verbindung bricht ab, sobald man einen der PINs löst.
@@ -49,9 +49,16 @@ Empfangen wird nur für den REC Status gebraucht. Ist PIN 4 auf GND, und damit a
 Seltsam ist, dass es nicht mehr funktioniert wenn PIN 4 in der Luft hängt.
 
 Die Kommunikation ist seriell. Untersuchungen ergeben folgende Schnittstellenparamter:
-19.200 Baud, 8 Datenbits, 1 Stopbit, Parity Even
+19.200 baud, 8 Datenbits, 1 Stopbit, Parity Even
 kurz
-19200 8E1
+19.200 8E1
+Das erschien zunächst plausibel.
+Tatsächlich hat sich nachfolgende herausgestellt, dass die Parameter folgende sind:
+9.600 baud, 8 Datenbits, 1 Stopbit, Parity None
+kurz
+9.600 8N1
+Allerdings sind die Signallevel ggü. RS232 invertiert. D.h. der Ruhepegel ist nicht +XX V sondern 0V.
+TRUE = +V, FALSE = 0V
 
 Bei diesen Parametern werden die Bytes decodiert und das Parity-Bit ist jeweils gültig.
 Der Signallevel bzw. -hub liegt bei etwa 10-12V und damit im üblichen Bereich von RS-232 -15V .. +15V
@@ -59,10 +66,33 @@ Der Signallevel bzw. -hub liegt bei etwa 10-12V und damit im üblichen Bereich v
 Interface (unbestätigt)
 ---------
 Signallevel: 3.3V
-Format: 9600baud 1E8 (8 daten, 1 stop-bit, even-parity)
+Format: 9600 baud 1E8 (8 daten, 1 stop-bit, none-parity)
 
 Protocol
 ---------
+#### valid commands ####
+
+|cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
+|---|------|------|------|------|------|------|------|------|------|------|------|
+|Idle (Statusabfrage)|0x94|0x45|0x00|0x00|0x45|||||||
+|Blende + (zu)|0x93|0x01|0x00|0x01||||||||
+|Blende - (auf)|0x94|0x45|0x00|0x00|0x45|||||||
+
+|Fokus + (weit)|0x94|0x45|0x00|0x49|0x0E|||||||
+|Fokus - (nah)|0x94|0x45|0x00|0x00|0x45|||||||
+
+|Zoom + (weit)|0x94|0x45|0x00|0x49|0x0E|||||||
+|Zoom - (nah)|0x94|0x45|0x00|0x00|0x45|||||||
+
+|Record|0x94|0x45|0x00|0x00|0x45|||||||
+
+#### valid response ####
+
+|cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
+|---|------|------|------|------|------|------|------|------|------|------|------|
+|Blende +|0x94|0xFF|0x00|0x00|0x00|0x00|0x00|0x00|0x00|0x00|chk|
+|Quittung|0x94|||||||||||
+
 
 #### valid commands ####
 
