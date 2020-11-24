@@ -80,6 +80,20 @@ Blendenkommando schaltet 1 Stufe +(-
 Fokus bleibt auf dem letzten Status - es muss ein Stop geben
 Zoom bleibt auf dem letzten Status - es muss ein Stop geben
 
+links drehen<br>
+95 4C 30 00 3E 3A<br>
+95 4C 30 00 39 35<br>
+95 4C 30 00 2D 29<br>
+95 4C 30 00 15 11<br>
+95 4C 30 00 28 24<br>
+95 4C 30 00 7B 77<br>
+
+95 4C 30 01 00 7D Stop?<br>
+
+rechts drehen<br>
+95 4C 30 01 02 7F<br>
+95 4C 30 01 0E 0B<br>
+
 |cmd|Byte 1|Byte 2|Byte 3|Byte 4|Byte 5|Byte 6|Byte 7|Byte 8|Byte 9|Byte 10|Byte 11|
 |---|------|------|------|------|------|------|------|------|------|------|------|
 |Idle (Statusabfrage))|0x93|0x01|0x00|0x01||||||||
