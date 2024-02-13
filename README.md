@@ -1,13 +1,11 @@
 # jlip
-All about JLIP (Joint Level Interface Protocol) / J-Terminal / JVC Camera Remote
+All about JLIP (Joint Level Interface Protocol) / J-Terminal / JVC Camera Remote.  
 I searched for a possible way to control my jvc cams from a local remote controller.
 
 First of all a collection of ressources that i've found about jvc remote control:
-- jvc-remote Project
-Repository 1:
-https://gitlab.ags.etc.tu-bs.de/e.lab/jvc-remote
-Repository 2:
-https://github.com/ags-tubs/jvc-remote
+- jvc-remote Project  
+Repository 1: https://gitlab.ags.etc.tu-bs.de/e.lab/jvc-remote  
+Repository 2: https://github.com/ags-tubs/jvc-remote  
 - http://www.johnwillis.com/2018/09/jvc-jlip-joint-level-interface-protocol.html
 - JLIP Protocol Documentation
 - pinout
@@ -32,11 +30,11 @@ JVC GY-HM70E (=CAM)
 VariZoom VZROCK-J150 (=RC)
 
 RC an CAM angeschlossen, Messung parallel an den PINs
-nach dem Einschalten liegt auf
-PIN 1 RX etwa +10V
-PIN 2 TX etwa +12V
-PIN 3 GND
-PIN 4 folgt PIN 1
+nach dem Einschalten liegt auf  
++ PIN 1 RX etwa +10V
++ PIN 2 TX etwa +12V
++ PIN 3 GND
++ PIN 4 folgt PIN 1
 
 Die Spannungen gehen nach etwa 10 Sekunden zurück auf 0V, wenn keine Fernbedienung angeschlossen ist.
 Vermutlich ist die Vorraussetzung, dass die Fernbedienung laufend eine Befehlsfolge schickt, so dass die Spannung/Schnittstelle an bleibt.
@@ -47,7 +45,8 @@ kann nichts mehr Empfangen werden. PIN 1 geht dann nämlich auch mit auf GND!
 (??)
 Senden kann man trotzdem.
 Empfangen wird nur für den REC Status gebraucht. Ist PIN 4 auf GND, und damit auch PIN 1, geht die REC Lampe der RC halt nicht an.
-Seltsam ist, dass es nicht mehr funktioniert wenn PIN 4 in der Luft hängt.
+Seltsam ist, dass es nicht mehr funktioniert wenn PIN 4 in der Luft hängt.  
+Vielleicht ist einer der PINs (PIN 1 oder PIN 4) eine Rückmeldung ob die RC gesteckt ist?
 
 Die Kommunikation ist seriell. Untersuchungen ergeben folgende Schnittstellenparamter:
 19.200 baud, 8 Datenbits, 1 Stopbit, Parity Even
@@ -61,7 +60,7 @@ kurz
 Allerdings sind die Signallevel ggü. RS232 invertiert. D.h. der Ruhepegel ist nicht +XX V sondern 0V.
 TRUE = +V, FALSE = 0V
 
-Bei diesen Parametern werden die Bytes decodiert und das Parity-Bit ist jeweils gültig.
+Bei diesen Parametern werden die Bytes decodiert und das Parity-Bit ist jeweils gültig. ***edit*** Parity wird nicht ausgewertet.
 Der Signallevel bzw. -hub liegt bei etwa 10-12V und damit im üblichen Bereich von RS-232 -15V .. +15V
 
 Interface (unbestätigt)
@@ -76,9 +75,9 @@ Protocol
 Byte 1 Low Nibble sieht aus, als wäre es die Länge der nachfolgenden Daten.
 Das letzte Byte ist vermutlich die Checksumme.
 
-Blendenkommando schaltet 1 Stufe +(-
-Fokus bleibt auf dem letzten Status - es muss ein Stop geben
-Zoom bleibt auf dem letzten Status - es muss ein Stop geben
++ Blendenkommando schaltet 1 Stufe +/-
++ Fokus bleibt auf dem letzten Status - es muss ein Stop geben
++ Zoom bleibt auf dem letzten Status - es muss ein Stop geben
 
 links drehen<br>
 95 4C 30 00 3E 3A<br>
